@@ -1,0 +1,40 @@
+library verilog;
+use verilog.vl_types.all;
+library work;
+entity ex_mem_state_reg is
+    port(
+        clk             : in     vl_logic;
+        load_ex_mem     : in     vl_logic;
+        flush           : in     vl_logic;
+        ex_mem_branch_prediction_in: in     vl_logic;
+        ex_mem_branch_prediction_out: out    vl_logic;
+        ex_mem_predictor_in: in     vl_logic;
+        ex_mem_predictor_out: out    vl_logic;
+        ex_mem_btb_target_pc_in: in     vl_logic_vector(15 downto 0);
+        ex_mem_btb_target_pc_out: out    vl_logic_vector(15 downto 0);
+        ex_mem_flush_pc_in: in     vl_logic_vector(15 downto 0);
+        ex_mem_flush_pc_out: out    vl_logic_vector(15 downto 0);
+        ex_mem_pc_in    : in     vl_logic_vector(15 downto 0);
+        ex_mem_pc_adder_in: in     vl_logic_vector(15 downto 0);
+        ex_mem_zextvect8_in: in     vl_logic_vector(15 downto 0);
+        ex_mem_alu_in   : in     vl_logic_vector(15 downto 0);
+        ex_mem_sr1_in   : in     vl_logic_vector(15 downto 0);
+        ex_mem_sr2_in   : in     vl_logic_vector(15 downto 0);
+        ex_mem_pc_out   : out    vl_logic_vector(15 downto 0);
+        ex_mem_pc_adder_out: out    vl_logic_vector(15 downto 0);
+        ex_mem_zextvect8_out: out    vl_logic_vector(15 downto 0);
+        ex_mem_alu_out  : out    vl_logic_vector(15 downto 0);
+        ex_mem_sr1_out  : out    vl_logic_vector(15 downto 0);
+        ex_mem_sr2_out  : out    vl_logic_vector(15 downto 0);
+        ex_mem_ir_nzp_in: in     vl_logic_vector(2 downto 0);
+        ex_mem_ir_nzp_out: out    vl_logic_vector(2 downto 0);
+        ex_mem_cntrl_in : in     work.lc3b_types.lc3b_control_word;
+        ex_mem_cntrl_out: out    work.lc3b_types.lc3b_control_word;
+        ex_mem_dest_in  : in     vl_logic_vector(2 downto 0);
+        ex_mem_dest_out : out    vl_logic_vector(2 downto 0);
+        ex_mem_sr2_id_in: in     vl_logic_vector(2 downto 0);
+        ex_mem_sr2_id_out: out    vl_logic_vector(2 downto 0);
+        ex_mem_is_nop_in: in     vl_logic;
+        ex_mem_is_nop_out: out    vl_logic
+    );
+end ex_mem_state_reg;

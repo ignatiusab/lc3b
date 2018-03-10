@@ -1,0 +1,46 @@
+library verilog;
+use verilog.vl_types.all;
+entity l2_cache_datapath is
+    port(
+        clk             : in     vl_logic;
+        data_in_mux_sel : in     vl_logic;
+        pmem_address_mux_sel: in     vl_logic_vector(2 downto 0);
+        load_pmem_wdata : in     vl_logic;
+        lru_w           : in     vl_logic;
+        dirty0_w        : in     vl_logic;
+        valid0_w        : in     vl_logic;
+        tag0_w          : in     vl_logic;
+        data0_w         : in     vl_logic;
+        dirty1_w        : in     vl_logic;
+        valid1_w        : in     vl_logic;
+        tag1_w          : in     vl_logic;
+        data1_w         : in     vl_logic;
+        dirty2_w        : in     vl_logic;
+        valid2_w        : in     vl_logic;
+        tag2_w          : in     vl_logic;
+        data2_w         : in     vl_logic;
+        dirty3_w        : in     vl_logic;
+        valid3_w        : in     vl_logic;
+        tag3_w          : in     vl_logic;
+        data3_w         : in     vl_logic;
+        dirty0          : out    vl_logic;
+        dirty1          : out    vl_logic;
+        dirty2          : out    vl_logic;
+        dirty3          : out    vl_logic;
+        hit0            : out    vl_logic;
+        hit1            : out    vl_logic;
+        hit2            : out    vl_logic;
+        hit3            : out    vl_logic;
+        lru             : out    vl_logic_vector(1 downto 0);
+        tag             : in     vl_logic_vector(4 downto 0);
+        index           : in     vl_logic_vector(5 downto 0);
+        offset          : in     vl_logic;
+        mem_address     : in     vl_logic_vector(15 downto 0);
+        mem_write       : in     vl_logic;
+        mem_wdata       : in     vl_logic_vector(127 downto 0);
+        mem_rdata       : out    vl_logic_vector(127 downto 0);
+        pmem_rdata      : in     vl_logic_vector(255 downto 0);
+        pmem_address    : out    vl_logic_vector(15 downto 0);
+        pmem_wdata      : out    vl_logic_vector(255 downto 0)
+    );
+end l2_cache_datapath;

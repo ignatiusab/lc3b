@@ -1,0 +1,9 @@
+import lc3b_types::*;
+
+module arb_datapath
+(
+
+	input
+);
+
+endmodule: arb_datapath

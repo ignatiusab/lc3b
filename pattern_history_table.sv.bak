@@ -1,0 +1,40 @@
+import lc3b_types::*;
+
+module pattern_history_table
+(
+	input clk,
+	input logic update_pattern,
+	input lc3b_word lookup_pc,
+	input logic wb_take_jump,
+	input lc3b_word resolved_pc,
+	input [3:0] history,
+	
+	output logic predict_taken
+);
+
+logic [3:0] address;
+logic [1:0] data [3:0];
+
+assign read_address = current_pc[4:1] ^ history;
+assign write_address = resolved_pc[4:1] 
+
+initial
+begin
+    for (int i = 0; i < $size(data); i++)
+    begin
+        data[i] = 2'b10;
+    end
+end
+
+always_ff @(posedge clk)
+begin
+    if (update_pattern == 1)
+    begin
+        case (data[])
+    end
+end
+
+assign dataout = data[index];
+
+
+endmodule : pattern_history_table

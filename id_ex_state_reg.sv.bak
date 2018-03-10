@@ -1,0 +1,48 @@
+import lc3b_types::*;
+
+module id_ex_state_reg
+(
+    input clk,
+	 
+	 input lc3b_word id_ex_pc_in,
+	 output lc3b_word id_ex_pc_out,
+	 
+	 input lc3b_word id_ex_zextvect8_in, id_ex_zext4_in, id_ex_sext5_in, 
+						  id_ex_off6_in, id_ex_off_9_11_in, id_ex_sr1_in, id_ex_sr2_in,
+
+	 output lc3b_word id_ex_zextvect8_out, id_ex_zext4_out, id_ex_sext5_out, 
+						  id_ex_off6_out, id_ex_off_9_11_out, id_ex_sr1_out, id_ex_sr2_out,
+						  
+	 input [2:0] id_ex_ir_nzp_in,
+	 output [2:0] id_ex_ir_nzp_out
+);
+
+register if_id_pc
+(
+	.clk,
+	.load(1'b1),
+	.in(if_id_pc_in),
+	.out(if_id_pc_out,
+)
+ir instr_reg
+(
+	.clk,
+	.load(1'b1),
+	.in(ir_input), //From MDR output
+	.opcode,
+	.dest(dest),
+	.src1(sr1),
+	.src2(sr2),
+	.offset6,
+	.trapvect8,
+	.offset9,
+	.offset11,
+	.imm5,
+	.imm4,
+	.imm5_bit,
+	.imm4_bit,
+	.instr_bit11
+);
+
+
+endmodule : if_id_state_reg

@@ -1,0 +1,159 @@
+import lc3b_types::*;
+
+module perf_counters
+(
+	input clk,
+	
+	input lc3b_word address,
+	input logic clear,
+	output lc3b_word counter_rdata,
+	
+	input logic i_cache_hit, i_cache_miss,
+	input logic d_cache_hit, d_cache_miss,
+	input logic l2_cache_hit, l2_cache_miss,
+	input logic i_cache_stall, d_cache_stall,
+	input logic non_cond_stall,
+	input logic br_mispredict,
+	input logic total_branches
+);
+
+lc3b_word internal_address;
+assign internal_address ={address[15], address[15:1]};
+
+lc3b_word i_cache_hit_counter;
+lc3b_word i_cache_miss_counter;
+lc3b_word d_cache_hit_counter;
+lc3b_word d_cache_miss_counter;
+lc3b_word l2_cache_hit_counter;
+lc3b_word l2_cache_miss_counter;
+lc3b_word i_cache_stall_counter;
+lc3b_word d_cache_stall_counter;
+lc3b_word non_cond_stall_counter;
+lc3b_word br_mispredict_counter;
+lc3b_word br_correct_predict_counter;
+lc3b_word total_branches_counter;
+
+initial
+begin
+	i_cache_hit_counter = 0;
+	i_cache_miss_counter = 0;
+	d_cache_hit_counter = 0;
+	d_cache_miss_counter = 0;
+	l2_cache_hit_counter = 0;
+	l2_cache_miss_counter = 0;
+	i_cache_stall_counter = 0;
+	d_cache_stall_counter = 0;
+	non_cond_stall_counter = 0;
+	br_mispredict_counter = 0;
+	total_branches_counter = 0;
+end
+
+always_comb
+begin
+	case (internal_address)
+	
+		16'hffff : counter_rdata = i_cache_hit_counter;
+		
+		16'hfffe : counter_rdata = i_cache_miss_counter;
+		
+		16'hfffd : counter_rdata = d_cache_hit_counter;
+		
+		16'hfffc : counter_rdata = d_cache_miss_counter;
+		
+		16'hfffb : counter_rdata = l2_cache_hit_counter;
+		
+		16'hfffa : counter_rdata = l2_cache_miss_counter;
+		
+		16'hfff9 : counter_rdata = i_cache_stall_counter;
+		
+		16'hfff8 : counter_rdata = d_cache_stall_counter;
+		
+		16'hfff7 : counter_rdata = non_cond_stall_counter;
+		
+		16'hfff6 : counter_rdata = br_mispredict_counter;
+		
+		16'hfff5 : counter_rdata = br_correct_predict_counter;
+		
+		16'hfff4 : counter_rdata = total_branches_counter;
+		
+		default : counter_rdata = 16'd0;
+	endcase
+end
+
+always_ff @( posedge clk)
+begin
+	if(clear && internal_address == 16'hffff)
+		i_cache_hit_counter = 0;
+	else if(i_cache_hit)
+		i_cache_hit_counter = i_cache_hit_counter + 16'd1;
+		
+	if(clear && internal_address == 16'hfffe)
+		i_cache_miss_counter = 0;
+	else if(i_cache_miss)
+		i_cache_miss_counter = i_cache_miss_counter + 16'd1;
+		
+	if(clear && internal_address == 16'hfffd)
+		d_cache_hit_counter = 0;
+	else if(d_cache_hit)
+		d_cache_hit_counter = d_cache_hit_counter + 16'd1;
+		
+	if(clear && internal_address == 16'hfffc)
+		d_cache_miss_counter = 0;
+	else if(d_cache_miss)
+		d_cache_miss_counter = d_cache_miss_counter + 16'd1;
+		
+	if(clear && internal_address == 16'hfffb)
+		l2_cache_hit_counter = 0;
+	else if(l2_cache_hit)
+		l2_cache_hit_counter = l2_cache_hit_counter + 16'd1;
+		
+	if(clear && internal_address == 16'hfffa)
+		l2_cache_miss_counter = 0;
+	else if(l2_cache_miss)
+		l2_cache_miss_counter = l2_cache_miss_counter + 16'd1;		
+	
+	if(clear && internal_address == 16'hfff4)
+		total_branches_counter = 0;
+	else if(total_branches)
+		total_branches_counter = total_branches_counter + 16'd1;
+end
+
+
+always_ff @( posedge i_cache_stall)
+begin
+	if(clear && internal_address == 16'hfff9)
+		i_cache_stall_counter = 0;
+	else if(i_cache_stall)
+		i_cache_stall_counter = i_cache_stall_counter + 16'd1;
+end
+
+always_ff @( posedge d_cache_stall)
+begin
+	if(clear && internal_address == 16'hfff8)
+		d_cache_stall_counter = 0;
+	else if(d_cache_stall)
+		d_cache_stall_counter = d_cache_stall_counter + 16'd1;
+end
+
+always_ff @( posedge non_cond_stall)
+begin
+	if(clear && internal_address == 16'hfff7)
+		non_cond_stall_counter = 0;
+	else if(non_cond_stall)
+		non_cond_stall_counter = non_cond_stall_counter + 16'd1;
+end
+
+always_ff @( posedge br_mispredict)
+begin
+	if(clear && internal_address == 16'hfff6)
+		br_mispredict_counter = 0;
+	else if(br_mispredict)
+		br_mispredict_counter = br_mispredict_counter + 16'd1;
+end
+
+always_comb
+begin
+	br_correct_predict_counter = total_branches_counter - br_mispredict_counter;
+end
+
+endmodule : perf_counters

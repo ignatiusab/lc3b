@@ -1,0 +1,46 @@
+library verilog;
+use verilog.vl_types.all;
+library work;
+entity id_ex_state_reg is
+    port(
+        clk             : in     vl_logic;
+        load_id_ex      : in     vl_logic;
+        id_ex_branch_prediction_in: in     vl_logic;
+        id_ex_branch_prediction_out: out    vl_logic;
+        id_ex_predictor_in: in     vl_logic;
+        id_ex_predictor_out: out    vl_logic;
+        id_ex_flush_pc_in: in     vl_logic_vector(15 downto 0);
+        id_ex_flush_pc_out: out    vl_logic_vector(15 downto 0);
+        id_ex_btb_target_pc_in: in     vl_logic_vector(15 downto 0);
+        id_ex_btb_target_pc_out: out    vl_logic_vector(15 downto 0);
+        id_ex_pc_in     : in     vl_logic_vector(15 downto 0);
+        id_ex_pc_out    : out    vl_logic_vector(15 downto 0);
+        id_ex_zextvect8_in: in     vl_logic_vector(15 downto 0);
+        id_ex_zext4_in  : in     vl_logic_vector(15 downto 0);
+        id_ex_sext5_in  : in     vl_logic_vector(15 downto 0);
+        id_ex_off6_in   : in     vl_logic_vector(15 downto 0);
+        id_ex_adj_9_11_in: in     vl_logic_vector(15 downto 0);
+        id_ex_sr1_in    : in     vl_logic_vector(15 downto 0);
+        id_ex_sr2_in    : in     vl_logic_vector(15 downto 0);
+        id_ex_zextvect8_out: out    vl_logic_vector(15 downto 0);
+        id_ex_zext4_out : out    vl_logic_vector(15 downto 0);
+        id_ex_sext5_out : out    vl_logic_vector(15 downto 0);
+        id_ex_off6_out  : out    vl_logic_vector(15 downto 0);
+        id_ex_adj_9_11_out: out    vl_logic_vector(15 downto 0);
+        id_ex_sr1_out   : out    vl_logic_vector(15 downto 0);
+        id_ex_sr2_out   : out    vl_logic_vector(15 downto 0);
+        id_ex_ir_nzp_in : in     vl_logic_vector(2 downto 0);
+        id_ex_ir_nzp_out: out    vl_logic_vector(2 downto 0);
+        id_ex_cntrl_in  : in     work.lc3b_types.lc3b_control_word;
+        id_ex_cntrl_out : out    work.lc3b_types.lc3b_control_word;
+        id_ex_dest_in   : in     vl_logic_vector(2 downto 0);
+        id_ex_dest_out  : out    vl_logic_vector(2 downto 0);
+        id_ex_sr1_id_in : in     vl_logic_vector(2 downto 0);
+        id_ex_sr1_id_out: out    vl_logic_vector(2 downto 0);
+        id_ex_sr2_id_in : in     vl_logic_vector(2 downto 0);
+        id_ex_sr2_id_out: out    vl_logic_vector(2 downto 0);
+        id_ex_is_nop_in : in     vl_logic;
+        id_ex_is_nop_out: out    vl_logic;
+        flush           : in     vl_logic
+    );
+end id_ex_state_reg;

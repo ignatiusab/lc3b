@@ -1,0 +1,26 @@
+module if_id_state_reg
+(
+    input clk,
+    input load,
+    input [15:0] if_id_pc_in,
+	 output [15:0] if_id_pc_out,
+	 
+	 input [15:0] ir_input
+	 
+	 
+	 output lc3b_opcode opcode_out,
+    output lc3b_reg dest_out, src1_out, src2_out,
+    output lc3b_offset6 offset6,
+	 output lc3b_trapvect8 trapvect8,
+    output lc3b_offset9 offset9,
+	 output lc3b_offset11 offset11,
+	 output lc3b_imm5	imm5,
+	 output lc3b_imm4 imm4,
+	 output logic imm5_bit, imm4_bit, instr_bit11
+    output logic [width-1:0] out
+);
+
+logic [width-1:0] data;
+
+
+endmodule : if_id_state_reg

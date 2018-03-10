@@ -1,0 +1,570 @@
+# do /tmp/tmp.TjLn2y5bJX/do.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/lc3b_types.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package lc3b_types
+# 
+# Top level modules:
+# 	--none--
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/state_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module state_register
+# 
+# Top level modules:
+# 	state_register
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/nop_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module nop_register
+# 
+# Top level modules:
+# 	nop_register
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/cc_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cc_register
+# 
+# Top level modules:
+# 	cc_register
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l1_cache_control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l1_cache_control_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l1_cache_control
+# 
+# Top level modules:
+# 	l1_cache_control
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l2_cache_control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l2_cache_control_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l2_cache_control
+# 
+# Top level modules:
+# 	l2_cache_control
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/arb_control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package arb_control_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module arb_control
+# 
+# Top level modules:
+# 	arb_control
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/adder.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package adder_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module adder
+# 
+# Top level modules:
+# 	adder
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/plus2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module plus2
+# 
+# Top level modules:
+# 	plus2
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module register
+# 
+# Top level modules:
+# 	register
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/shift_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module shift_register
+# 
+# Top level modules:
+# 	shift_register
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/btb_register.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module btb_register
+# 
+# Top level modules:
+# 	btb_register
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/waymux4.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package waymux4_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module waymux4
+# 
+# Top level modules:
+# 	waymux4
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/forwarding_unit.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package forwarding_unit_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module forwarding_unit
+# 
+# Top level modules:
+# 	forwarding_unit
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/control_rom.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package control_rom_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module control_rom
+# 
+# Top level modules:
+# 	control_rom
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/id_ex_state_reg.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package id_ex_state_reg_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module id_ex_state_reg
+# 
+# Top level modules:
+# 	id_ex_state_reg
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/ex_mem_state_reg.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package ex_mem_state_reg_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module ex_mem_state_reg
+# 
+# Top level modules:
+# 	ex_mem_state_reg
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/mem_wb_state_reg.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mem_wb_state_reg_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mem_wb_state_reg
+# 
+# Top level modules:
+# 	mem_wb_state_reg
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/detect_hit.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package detect_hit_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module detect_hit
+# 
+# Top level modules:
+# 	detect_hit
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/line_builder.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package line_builder_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module line_builder
+# 
+# Top level modules:
+# 	line_builder
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l2_cache_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l2_cache_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l2_cache_datapath
+# 
+# Top level modules:
+# 	l2_cache_datapath
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l2_detect_hit.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l2_detect_hit_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l2_detect_hit
+# 
+# Top level modules:
+# 	l2_detect_hit
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l2_line_builder.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l2_line_builder_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l2_line_builder
+# 
+# Top level modules:
+# 	l2_line_builder
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l2_cache_lru.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l2_cache_lru_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l2_cache_lru
+# 
+# Top level modules:
+# 	l2_cache_lru
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/arb_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package arb_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module arb_datapath
+# 
+# Top level modules:
+# 	arb_datapath
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/high_low_byte_selector.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package high_low_byte_selector_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module high_low_byte_selector
+# 
+# Top level modules:
+# 	high_low_byte_selector
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/zext_high_low_byte.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package zext_high_low_byte_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module zext_high_low_byte
+# 
+# Top level modules:
+# 	zext_high_low_byte
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/mux2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mux2_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mux2
+# 
+# Top level modules:
+# 	mux2
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/regfile.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package regfile_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/mux4.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mux4_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mux4
+# 
+# Top level modules:
+# 	mux4
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/zext.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package zext_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module zext
+# 
+# Top level modules:
+# 	zext
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/sext.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package sext_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module sext
+# 
+# Top level modules:
+# 	sext
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/cc_comp.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cc_comp_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cc_comp
+# 
+# Top level modules:
+# 	cc_comp
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/array.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package array_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module array
+# 
+# Top level modules:
+# 	array
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/adj.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package adj_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module adj
+# 
+# Top level modules:
+# 	adj
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/alu.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package alu_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/gencc.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package gencc_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module gencc
+# 
+# Top level modules:
+# 	gencc
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/ir.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package ir_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module ir
+# 
+# Top level modules:
+# 	ir
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/demux2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package demux2_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module demux2
+# 
+# Top level modules:
+# 	demux2
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/eviction_write_buffer.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package eviction_write_buffer_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module eviction_write_buffer
+# 
+# Top level modules:
+# 	eviction_write_buffer
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/perf_counters.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package perf_counters_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module perf_counters
+# 
+# Top level modules:
+# 	perf_counters
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/mmio.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mmio_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mmio
+# 
+# Top level modules:
+# 	mmio
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/btb_entry.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package btb_entry_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module btb_entry
+# 
+# Top level modules:
+# 	btb_entry
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/demux16.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package demux16_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module demux16
+# 
+# Top level modules:
+# 	demux16
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/pattern_history_table.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package pattern_history_table_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module pattern_history_table
+# 
+# Top level modules:
+# 	pattern_history_table
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/if_id_state_reg.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package if_id_state_reg_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module if_id_state_reg
+# 
+# Top level modules:
+# 	if_id_state_reg
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l1_cache_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l1_cache_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l1_cache_datapath
+# 
+# Top level modules:
+# 	l1_cache_datapath
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l2_cache.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l2_cache_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l2_cache
+# 
+# Top level modules:
+# 	l2_cache
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/arbiter.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package arbiter_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module arbiter
+# 
+# Top level modules:
+# 	arbiter
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/branch_target_buffer.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package branch_target_buffer_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module branch_target_buffer
+# 
+# Top level modules:
+# 	branch_target_buffer
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/global_branch_history_predictor.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package global_branch_history_predictor_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module global_branch_history_predictor
+# 
+# Top level modules:
+# 	global_branch_history_predictor
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/local_branch_history_predictor.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package local_branch_history_predictor_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module local_branch_history_predictor
+# 
+# Top level modules:
+# 	local_branch_history_predictor
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/l1_cache.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package l1_cache_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module l1_cache
+# 
+# Top level modules:
+# 	l1_cache
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/branch_predictor.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package branch_predictor_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module branch_predictor
+# 
+# Top level modules:
+# 	branch_predictor
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/cpu_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cpu_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cpu_datapath
+# 
+# Top level modules:
+# 	cpu_datapath
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/mp3.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mp3_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mp3
+# 
+# Top level modules:
+# 	mp3
+# 
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/mp3_tb.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module mp3_tb
+# 
+# Top level modules:
+# 	mp3_tb
+# vlog -sv -work work +incdir+/home/elvelez2/ece411/ibakev/mp3 {/home/elvelez2/ece411/ibakev/mp3/physical_memory.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module physical_memory
+# 
+# Top level modules:
+# 	physical_memory
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L stratixiii_ver -L rtl_work -L work -voptargs="+acc"  mp3_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L stratixiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps mp3_tb 
+# Loading sv_std.std
+# Loading work.mp3_tb
+# Loading work.lc3b_types
+# Loading work.mp3_sv_unit
+# Loading work.mp3
+# Loading work.cpu_datapath_sv_unit
+# Loading work.cpu_datapath
+# Loading work.register
+# Loading work.plus2
+# Loading work.mux4_sv_unit
+# Loading work.mux4
+# Loading work.adder_sv_unit
+# Loading work.adder
+# Loading work.branch_predictor_sv_unit
+# Loading work.branch_predictor
+# Loading work.global_branch_history_predictor_sv_unit
+# Loading work.global_branch_history_predictor
+# Loading work.shift_register
+# Loading work.pattern_history_table_sv_unit
+# Loading work.pattern_history_table
+# Loading work.local_branch_history_predictor_sv_unit
+# Loading work.local_branch_history_predictor
+# Loading work.branch_target_buffer_sv_unit
+# Loading work.branch_target_buffer
+# Loading work.btb_entry_sv_unit
+# Loading work.btb_entry
+# Loading work.btb_register
+# Loading work.mux2_sv_unit
+# Loading work.mux2
+# Loading work.demux16_sv_unit
+# Loading work.demux16
+# Loading work.if_id_state_reg_sv_unit
+# Loading work.if_id_state_reg
+# Loading work.state_register
+# Loading work.ir_sv_unit
+# Loading work.ir
+# Loading work.nop_register
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.sext_sv_unit
+# Loading work.sext
+# Loading work.zext_sv_unit
+# Loading work.zext
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.id_ex_state_reg_sv_unit
+# Loading work.id_ex_state_reg
+# Loading work.high_low_byte_selector_sv_unit
+# Loading work.high_low_byte_selector
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.forwarding_unit_sv_unit
+# Loading work.forwarding_unit
+# Loading work.ex_mem_state_reg_sv_unit
+# Loading work.ex_mem_state_reg
+# Loading work.zext_high_low_byte_sv_unit
+# Loading work.zext_high_low_byte
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cc_register
+# Loading work.cc_comp_sv_unit
+# Loading work.cc_comp
+# Loading work.mem_wb_state_reg_sv_unit
+# Loading work.mem_wb_state_reg
+# Loading work.perf_counters_sv_unit
+# Loading work.perf_counters
+# Loading work.mmio_sv_unit
+# Loading work.mmio
+# Loading work.l1_cache_sv_unit
+# Loading work.l1_cache
+# Loading work.l1_cache_control_sv_unit
+# Loading work.l1_cache_control
+# Loading work.l1_cache_datapath_sv_unit
+# Loading work.l1_cache_datapath
+# Loading work.detect_hit_sv_unit
+# Loading work.detect_hit
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.line_builder_sv_unit
+# Loading work.line_builder
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.arb_datapath_sv_unit
+# Loading work.arb_datapath
+# Loading work.demux2_sv_unit
+# Loading work.demux2
+# Loading work.arb_control_sv_unit
+# Loading work.arb_control
+# Loading work.l2_cache_sv_unit
+# Loading work.l2_cache
+# Loading work.l2_cache_control_sv_unit
+# Loading work.l2_cache_control
+# Loading work.l2_cache_datapath_sv_unit
+# Loading work.l2_cache_datapath
+# Loading work.l2_detect_hit_sv_unit
+# Loading work.l2_detect_hit
+# Loading work.l2_cache_lru_sv_unit
+# Loading work.l2_cache_lru
+# Loading work.waymux4_sv_unit
+# Loading work.waymux4
+# Loading work.l2_line_builder_sv_unit
+# Loading work.l2_line_builder
+# Loading work.eviction_write_buffer_sv_unit
+# Loading work.eviction_write_buffer
+# Loading work.physical_memory
+# 
+# add wave *
+# view structure
+# add list -radix hexadecimal {/mp3_tb/dut/CPU_datapath/regfile/data}
+# run 7000000ns
+# write list /tmp/tmp.TjLn2y5bJX/test_list.lst
+# exit

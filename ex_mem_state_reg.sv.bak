@@ -1,0 +1,59 @@
+import lc3b_types::*;
+
+module ex_mem_state_reg
+(
+    input clk,
+
+    input lc3b_word ex_mem_pc_in, ex_mem_pc_adder_in,ex_mem_zextvect8_in, ex_mem_ir_nzp_in, ex_mem_alu_in,
+	 output lc3b_word ex_mem_pc_out, ex_mem_pc_adder_out, ex_mem_zextvect8_out, ex_mem_ir_nzp_out, ex_mem_alu_out,
+	 
+	 input lc3b_control_word ex_mem_cntrl_in,
+	 output lc3b_control_word ex_mem_cntrl_out
+	 
+);
+
+register ex_mem_pc
+(
+	.clk,
+	.load(1'b1),
+	.in(ex_mem_pc_in),
+	.out(ex_mem_pc_out)
+);
+
+register ex_mem_pc_adder
+(
+	.clk,
+	.load(1'b1),
+	.in(ex_mem_pc_adder_in),
+	.out(ex_mem_pc_adder_out)
+);
+register ex_mem_zextvect8
+(
+	.clk,
+	.load(1'b1),
+	.in(ex_mem_zextvect8_in),
+	.out(ex_mem_zextvect8_out)
+);
+register ex_mem_ir_nzp
+(
+	.clk,
+	.load(1'b1),
+	.in(ex_mem_ir_nzp_in),
+	.out(ex_mem_ir_nzp_out)
+);
+register ex_mem_alu
+(
+	.clk,
+	.load(1'b1),
+	.in(ex_mem_alu_in),
+	.out(ex_mem_alu_out)
+);
+register #(.width(16)) ex_mem_cntrl // NEED TO CHANGE WIDTH
+(
+	.clk,
+	.load(1'b1),
+	.in(ex_mem_cntrl_in),
+	.out(ex_mem_cntrl_out)
+);
+
+endmodule : ex_mem_state_reg

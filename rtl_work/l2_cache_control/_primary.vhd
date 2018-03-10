@@ -1,0 +1,44 @@
+library verilog;
+use verilog.vl_types.all;
+entity l2_cache_control is
+    port(
+        clk             : in     vl_logic;
+        dirty0          : in     vl_logic;
+        dirty1          : in     vl_logic;
+        dirty2          : in     vl_logic;
+        dirty3          : in     vl_logic;
+        hit0            : in     vl_logic;
+        hit1            : in     vl_logic;
+        hit2            : in     vl_logic;
+        hit3            : in     vl_logic;
+        lru             : in     vl_logic_vector(1 downto 0);
+        data_in_mux_sel : out    vl_logic;
+        pmem_address_mux_sel: out    vl_logic_vector(2 downto 0);
+        load_pmem_wdata : out    vl_logic;
+        lru_w           : out    vl_logic;
+        dirty0_w        : out    vl_logic;
+        valid0_w        : out    vl_logic;
+        tag0_w          : out    vl_logic;
+        data0_w         : out    vl_logic;
+        dirty1_w        : out    vl_logic;
+        valid1_w        : out    vl_logic;
+        tag1_w          : out    vl_logic;
+        data1_w         : out    vl_logic;
+        dirty2_w        : out    vl_logic;
+        valid2_w        : out    vl_logic;
+        tag2_w          : out    vl_logic;
+        data2_w         : out    vl_logic;
+        dirty3_w        : out    vl_logic;
+        valid3_w        : out    vl_logic;
+        tag3_w          : out    vl_logic;
+        data3_w         : out    vl_logic;
+        mem_read        : in     vl_logic;
+        mem_write       : in     vl_logic;
+        mem_resp        : out    vl_logic;
+        pmem_resp       : in     vl_logic;
+        pmem_write      : out    vl_logic;
+        pmem_read       : out    vl_logic;
+        cache_hit       : out    vl_logic;
+        cache_miss      : out    vl_logic
+    );
+end l2_cache_control;

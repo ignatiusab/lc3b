@@ -1,0 +1,306 @@
+import lc3b_types::*;
+
+module cpu_datapath
+(
+    input clk,
+
+    /* control signals */
+    
+    input logic load_pc, load_ir, load_regfile, load_mar, load_mdr, load_cc,
+	 input logic storemux_sel, destmux_sel, offset6mux_sel, adj_9_11_sel, sr1_high_low_sel, sr1_out_mux_sel, 
+					 mdrmux_sel,mdr_to_regfile_mux_sel, mdr_zext_high_low_sel,
+	 input logic[1:0] alumux_sel,pcmux_sel, regfilemux_sel, marmux_sel,  
+	 input lc3b_aluop aluop,
+
+	 
+    /* declare more ports here */
+	 input lc3b_word mem_rdata,
+	 output lc3b_word mem_wdata,
+	 output lc3b_word mem_address,
+	 output lc3b_opcode opcode,
+	 output imm5_bit, imm4_bit,
+	 output logic instr_bit11,
+	 output logic branch_enable
+);
+
+/* declare internal signals */
+lc3b_reg sr1, sr2, dest, storemux_out, destmux_out;
+lc3b_word sr1_out, sr2_out;
+lc3b_offset11 offset11;
+lc3b_offset6 offset6;
+lc3b_trapvect8 trapvect8;
+lc3b_offset9 offset9;
+lc3b_imm5 imm5;
+lc3b_imm4 imm4;
+lc3b_word zext4_out, sext5_out, sext6_out, adj6_out, zext8_out, adj9_out, adj11_out, adj_9_11_out, mem_rdata_high_out, mem_rdata_low_out;
+lc3b_word offset6mux_out;
+lc3b_word sr1_high_low_out, sr1_out_mux_out, mdr_zext_high_low_out, mdr_to_regfile_mux_out;
+lc3b_word pcmux_out, alumux_out, regfilemux_out, marmux_out, mdrmux_out;
+lc3b_word alu_out, pc_out, br_add_out, pc_plus2_out, mar_out, mdr_out;
+lc3b_nzp gencc_out, cc_out;
+assign mem_address = mar_out;
+assign mem_wdata = mdr_out;
+
+
+
+
+
+mux2 #(.width(3)) destmux
+(
+	.sel(destmux_sel),
+	.a(dest),
+	.b(3'b111),
+	.f(destmux_out)
+);
+
+/*
+ * Store Mux
+ */
+mux2 #(.width(3)) storemux
+(
+    .sel(storemux_sel),
+    .a(sr1),
+    .b(destmux_out),
+    .f(storemux_out)
+);
+
+/*
+ * MAR/MDR
+ */
+mux4 marmux
+(
+    .sel(marmux_sel),
+    .a(alu_out),
+    .b(pc_out),
+	 .c(mdr_out),
+	 .d(zext8_out << 1),
+    .f(marmux_out)
+);
+register mar
+(
+    .clk,
+    .load(load_mar),
+    .in(marmux_out),
+    .out(mar_out)
+);
+
+
+mux2 mdrmux
+(
+    .sel(mdrmux_sel),
+    .a(alu_out),
+    .b(mem_rdata),
+    .f(mdrmux_out)
+);
+register mdr
+(
+    .clk,
+    .load(load_mdr),
+    .in(mdrmux_out),
+    .out(mdr_out)
+);
+
+
+/*
+ * PC
+ */
+mux4 pcmux
+(
+    .sel(pcmux_sel),
+    .a(pc_plus2_out),
+    .b(br_add_out),
+	 .c(alu_out),
+	 .d(mdr_out),
+    .f(pcmux_out)
+);
+
+plus2 #(.width(16)) pc_plus2
+(
+	.in(pc_out),
+	.out(pc_plus2_out)
+);
+
+
+adj #(.width(11)) adj11
+(
+	.in(offset11),
+	.out(adj11_out)
+);
+
+adj #(.width(9)) adj9
+(
+	.in(offset9),
+	.out(adj9_out)
+);
+
+mux2 #(.width(16)) adj_9_11_mux
+(
+	.sel(adj_9_11_sel),
+	.a(adj9_out),
+	.b(adj11_out),
+	.f(adj_9_11_out)
+);
+
+adder #(.width(16)) br_add
+(
+	.a(adj_9_11_out),
+	.b(pc_out),
+	.sum(br_add_out)
+);
+
+register pc
+(
+    .clk,
+    .load(load_pc),
+    .in(pcmux_out),
+    .out(pc_out)
+);
+
+/* IR */
+ir instr_reg
+(
+	.clk,
+	.load(load_ir),
+	.in(mdr_out), //From MDR output
+	.opcode,
+	.dest(dest),
+	.src1(sr1),
+	.src2(sr2),
+	.offset6,
+	.trapvect8,
+	.offset9,
+	.offset11,
+	.imm5,
+	.imm4,
+	.imm5_bit,
+	.imm4_bit,
+	.instr_bit11
+);
+
+adj #(.width(6)) adj6
+(
+	.in(offset6),
+	.out(adj6_out)
+);
+sext #(.width(6)) sext6
+(
+	.in(offset6),
+	.out(sext6_out)
+);
+
+mux2 #(.width(16)) offset6mux
+(
+	.sel(offset6mux_sel),
+	.a(adj6_out),
+	.b(sext6_out),
+	.f(offset6mux_out)
+);
+sext #(.width(5)) sext5
+(
+	.in(imm5),
+	.out(sext5_out)
+);
+zext #(.width(4)) zext4
+(
+	.in(imm4),
+	.out(zext4_out)
+);
+zext #(.width(8)) zext8
+(
+	.in(trapvect8),
+	.out(zext8_out)
+);
+
+
+/*REG FILE*/
+
+zext_high_low_byte 	mdr_zext_high_low
+(
+	.sel(mdr_zext_high_low_sel),
+	.in(mdr_out),
+	.out(mdr_zext_high_low_out)
+);
+mux2 #(.width(16)) mdr_to_regfile_mux
+(
+	.sel(mdr_to_regfile_mux_sel),
+	.a(mdr_out),
+	.b(mdr_zext_high_low_out),
+	.f(mdr_to_regfile_mux_out)
+);
+mux4 #(.width(16)) regfilemux
+(
+	.sel(regfilemux_sel),
+	.a(alu_out),
+	.b(mdr_to_regfile_mux_out),
+	.c(br_add_out),
+	.d(pc_out),
+	.f(regfilemux_out)
+);
+
+regfile reg_file
+(
+	.clk,
+	.load(load_regfile),
+	.in(regfilemux_out),
+	.src_a(storemux_out),
+	.src_b(sr2),
+	.dest(destmux_out),
+	.reg_a(sr1_out),
+	.reg_b(sr2_out)
+);
+
+/*ALU*/
+mux4 #(.width(16)) alumux
+(
+	.sel(alumux_sel),
+	.a(sr2_out),
+	.b(offset6mux_out),
+	.c(sext5_out),
+	.d(zext4_out),
+	.f(alumux_out)
+);
+
+high_low_byte_selector sr1_high_low
+(
+	.sel(sr1_high_low_sel),
+	.in(sr1_out[7:0]),
+	.out(sr1_high_low_out)
+);
+mux2 #(.width(16)) sr1_out_mux
+(
+	.sel(sr1_out_mux_sel),
+	.a(sr1_out),
+	.b(sr1_high_low_out),
+	.f(sr1_out_mux_out)
+);
+alu ALU
+(
+	.aluop,
+	.a(sr1_out_mux_out),
+	.b(alumux_out),
+	.f(alu_out)
+);
+
+/*Condition Codes stuff*/
+gencc GENCC
+(
+	.in(regfilemux_out),
+	.out(gencc_out)
+);
+
+register #(.width(3)) CC
+(
+	.clk,
+	.load(load_cc),
+	.in(gencc_out),
+	.out(cc_out)
+);
+
+cc_comp cccomp
+(
+	.nzp(cc_out),
+	.instr_nzp(dest),
+	.branch_enable
+);
+
+endmodule : cpu_datapath

@@ -1,0 +1,100 @@
+import lc3b_types::*;
+
+module l1_cache
+(
+	input clk,
+	
+	// memory input signals
+	input mem_read, mem_write,
+	input lc3b_word mem_address, mem_wdata,
+	input lc3b_mem_wmask mem_byte_enable,
+	
+	// memory output signals
+	output logic mem_resp,
+	output lc3b_word mem_rdata,
+	
+	// physical memory input signals
+	input pmem_resp,
+	input lc3b_c_line pmem_rdata,
+	
+	// physical memory output signals
+	output logic pmem_read, pmem_write,
+	output lc3b_word pmem_address,
+	output lc3b_c_line pmem_wdata
+);
+
+logic dirty0, dirty1, hit0, hit1, lru;
+logic lru_w, dirty0_w, dirty1_w, valid0_w, valid1_w, tag0_w, tag1_w, data0_w, data1_w;
+logic data_in_mux_sel;
+logic [1:0] pmem_address_mux_sel;
+
+l1_cache_control l1_cache_control (
+	.clk,
+	
+	// input signals from cache_datapath
+	.dirty0, .dirty1,
+	.hit0, .hit1,
+	.lru,
+	
+	// output signals to cache_datapath
+	.data_in_mux_sel,
+	.pmem_address_mux_sel,
+	
+	// write signals
+	.lru_w,
+	.dirty0_w, .valid0_w, .tag0_w, .data0_w,
+	.dirty1_w, .valid1_w, .tag1_w, .data1_w,
+	
+	// memory input signals
+	.mem_read, .mem_write,
+	
+	// memory output signals
+	.mem_resp,
+	
+	// physical memory input signals
+	.pmem_resp,
+	
+	// physical memory output signals
+	.pmem_write, .pmem_read
+);
+
+l1_cache_datapath l1_cache_datapath (
+	.clk,
+	
+	// input signals from cache_control
+	.data_in_mux_sel,
+	.pmem_address_mux_sel,
+	
+	// write signals
+	.lru_w,
+	.dirty0_w, .valid0_w, .tag0_w, .data0_w,
+	.dirty1_w, .valid1_w, .tag1_w, .data1_w,
+	
+	// address signals
+	.index(mem_address[6:4]),
+	.tag(mem_address[15:7]),
+	.offset(mem_address[3:1]),
+	
+	// memory input signals
+	.mem_address,
+	.mem_write,
+	.mem_byte_enable,
+	.mem_wdata,
+	
+	// memory output signals
+	.mem_rdata,
+	
+	// physical memory input signals
+	.pmem_rdata,
+	
+	// physical memory output signals
+	.pmem_address,
+	.pmem_wdata,
+	
+	// output signals to cache_control
+	.dirty0, .dirty1,
+	.hit0, .hit1,
+	.lru
+);
+
+endmodule : l1_cache

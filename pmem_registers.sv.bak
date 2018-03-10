@@ -1,0 +1,22 @@
+module pmem_registers
+(
+	input logic pmem_read_in,
+	output logic pmem_read_out,
+	
+	input logic pmem_read_in,
+	output logic pmem_read_out,
+	
+	input logic pmem_read_in,
+	output logic pmem_read_out,
+	
+	input logic pmem_read_in,
+	output logic pmem_read_out,
+	
+	input logic pmem_read_in,
+	output logic pmem_read_out,
+	
+	input logic pmem_read_in,
+	output logic pmem_read_out,
+	
+	
+)

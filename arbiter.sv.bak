@@ -1,0 +1,16 @@
+import lc3b_types::*;
+
+module arbiter
+(
+	input clk,
+	
+	//From i-cache and d-cache
+	input lc3b_word			imem_address, dmem_address,
+	input logic					imem_read, dmem_read,
+	input logic					imem_write, dmem_write,
+	input lc3b_c_line			imem_wdata, dmem_wdata,
+	input	lc3b_mem_wmask		imem_byte_enable, dmem_byte_enable,
+	
+	
+);
+

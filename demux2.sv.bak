@@ -1,0 +1,7 @@
+module demux2 #(parameter width = 16)
+(
+	input logic sel,
+	input logic [width-1:0] in,
+	output logic [width-1:0] out_a,
+	output logic [width-1:0] out_b
+);

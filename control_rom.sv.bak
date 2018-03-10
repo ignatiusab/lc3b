@@ -1,0 +1,115 @@
+import lc3b_types::*;
+
+module control_rom
+(
+	input lc3b_opcode opcode,
+	input logic bit4, bit5, bit11,
+	output lc3b_control_word cntrl
+);
+
+always_comb
+begin
+	cntrl.opcode = opcode;
+	cntrl.aluop = alu_add;
+	cntrl.load_cc = 1'b0;
+	cntrl.load_regfile = 1'b0;
+	cntrl.storemux_sel = 1'b0;
+	cntrl.destmux_sel = 1'b0;
+	cntrl.offset6mux_sel = 1'b0;
+	cntrl.adj_9_11_sel = 1'b0;
+	cntrl.sr1_high_low_sel = 1'b0;
+	cntrl.sr1_out_mux_sel = 1'b0;
+	cntrl.dmdrmux_sel = 1'b0;
+	cntrl.mdr_to_regfile_mux_sel = 1'b0;
+	cntrl.mdr_zext_high_low_sel = 1'b0;
+	cntrl.alumux_sel = 2'b00;
+	cntrl.pcmux_sel = 2'b00;
+	cntrl.regfilemux_sel = 2'b00;
+	cntrl.marmux_sel = 2'b00;
+	
+	/* Assign control signals */
+	case (opcode)
+	
+	op_add: begin
+		cntrl.aluop = alu_add;
+		cntrl.load_regfile = 1'b1;
+		cntrl.load_cc = 1'b1;
+		cntrl.regfilemux_sel = 2'b00;
+		if (bit5)		// bit 5 is used to determine ADD or ADDi
+			alumux_sel = 2'b10;
+		else
+			alumux_sel = 2'b00;
+	end
+	
+	op_and: begin
+		cntrl.aluop = alu_and;
+		cntrl.load_regfile = 1'b1;
+		cntrl.load_cc = 1'b1;
+		cntrl.regfilemux_sel = 2'b00;
+		if (bit5)		// bit 5 is used to determine AND or ANDi
+			alumux_sel = 2'b10;
+		else
+			alumux_sel = 2'b00;
+	end
+	
+	op_br: begin
+		
+	end
+	
+	op_jmp: begin
+		
+	end
+	
+	op_jsr: begin
+		
+	end
+	
+	op_ldb: begin
+		
+	end
+	
+	op_ldi: begin
+		
+	end
+	
+	op_ldr: begin
+		
+	end
+	
+	op_lea: begin
+		
+	end
+	
+	op_not: begin
+		cntrl.aluop = alu_not;
+		cntrl.load_regfile = 1'b1;
+		cntrl.load_cc = 1'b1;
+		cntrl.regfilemux_sel = 2'b00;
+	end
+		
+	op_shf: begin
+		
+	end
+	
+	op_stb: begin
+		
+	end
+	
+	op_sti: begin
+		
+	end
+	
+	op_str: begin
+		
+	end
+	
+	op_trap: begin
+		
+	end
+	
+	default: cntrl = 0;		// unknown opcode, stop everything
+	
+	endcase
+end
+
+endmodule : control_rom
